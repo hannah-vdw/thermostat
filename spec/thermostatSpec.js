@@ -22,6 +22,15 @@ describe("Thermostat", () => {
     expect(thermostat.currentTemp()).toBe(19);
   })
 
+  it("throws an error if below 10", () => {
+    for (let i = 0; i < 12; i++) {
+      thermostat.down()
+    }
+    expect(thermostat.currentTemp()).toEqual(10);
+  })
+
+
+
 });
 
 
