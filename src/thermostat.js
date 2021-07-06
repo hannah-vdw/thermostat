@@ -1,5 +1,8 @@
 'use strict'
 
+
+console.log("HIYA")
+
 class Thermostat {
   constructor() {
     this.DEFAULT_TEMP = 20
