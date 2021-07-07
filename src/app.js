@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const thermostat = new Thermostat();
+  const currentEnergyUsage = document.querySelector('#current-energy-usage')
 
   const updateTemp = () => {
     document.querySelector('#current-temp').innerText = thermostat.temp;
+    currentEnergyUsage.innerText = thermostat.currentEnergyUse();
   }
   updateTemp()
-
-  // const currentTemp = document.querySelector('#current-temp')
-  // currentTemp.innerHTML = thermostat.temp;
 
   const tempUpBtn = document.querySelector('#temp-up')
   const tempDownBtn = document.querySelector('#temp-down')
@@ -32,10 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   psmBtn.addEventListener("click", () => {
     if (thermostat.isPowerSavingMode()) {
       thermostat.turnOffPowerSavingMode()
-      psmBtn.innerTextL = 'Turn on'
+      psmBtn.innerText = 'Turn on'
+    } else {
+      thermostat.turnOnPowerSavingMode()
+      psmBtn.innerText = 'Turn off'
     }
-    thermostat.turnOnPowerSavingMode()
-    psmBtn.innerText = 'Turn off'
   })
+
 
 })
