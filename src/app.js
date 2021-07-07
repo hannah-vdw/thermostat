@@ -1,5 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const cityBtn = document.querySelector('#city-btn')
+  const cityInput = document.querySelector('#enter-city')
+
+  cityBtn.addEventListener('click', (event) => {
+    const city = cityInput.value;
+    console.log(city)
+
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.apiKey}&units=metric`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        document.querySelector('#current-weather').innerText = `Current temperature in ${city} is ${data.main.temp}`
+      });
+  })
+
+
   const thermostat = new Thermostat();
   const currentEnergyUsage = document.querySelector('#current-energy-usage')
 
